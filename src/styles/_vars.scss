@@ -1,0 +1,26 @@
+$main-darkest : #1e1e28;
+$main-darker  : #302c41;
+$main-dark    : #3f3b5a;
+$main-medium  : #504e72;
+$main-light   : #6d6e8c;
+$main-lighter : #a7a9bc;
+$main-lightest: #e9eaee;
+
+$blue-darker  : #274c7a;
+$blue-dark    : #3d79ab;
+$blue-medium  : #5198c9;
+$blue-light   : #7bb5d7;
+$blue-lighter : #9bcae3;
+
+$error-dark   : #be425e;
+$error        : #d55776;
+$error-light  : #e695ac;
+
+$success-dark : #32845e;
+$success      : #43b884;
+$success-light: #7ecea8;
+
+
+@mixin animate {
+  transition: ease-out 0.15s all;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "lull",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "sirv public --single",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "^3.1.9",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
+    "@tauri-apps/cli": "^1.0.3",
+    "sass": "^1.53.0",
+    "svelte": "^3.44.0",
+    "svelte-preprocess": "^4.10.7",
+    "vite": "^2.9.9"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.0.2",
+    "page": "^1.11.6"
+  }
+}

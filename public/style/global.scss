@@ -1,0 +1,38 @@
+@import '../../src/styles/vars.scss';
+
+i {
+  all: unset;
+  display: inline-flex;
+  font-family: "NF icons";
+
+  @include animate;
+}
+
+html,
+body,
+#app {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: $main-darkest;
+  color: $main-lighter;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
+
+}
+
+a {
+  color: $blue-medium;
+  @include animate;
+
+  &:hover {
+    color: $blue-light;
+  }
+}
+
+#app {
+  display: flex;
+
+}
