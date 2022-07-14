@@ -4,10 +4,9 @@
   export let sound
 
   let toggleSound = evt => {
+    evt.preventDefault()
     let card = evt.target.closest("card")
-    let cardSound = card.getAttribute("data-sound")
 
-    let icon = evt.target
     card.classList.toggle("active")
 
     let range = card.querySelector('[type="range"]')
@@ -20,7 +19,6 @@
   let updateVolume = evt => {
     let card = evt.target.closest("card")
     let range = card.querySelector('[type="range"]')
-    let cardSound = card.getAttribute("data-sound")
     
     let _$sound = $sounds.find(e => e.name == sound.name)
     console.log(_$sound)

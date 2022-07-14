@@ -39,6 +39,7 @@ a {
 * {
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
+  user-select: none;
 }
 
 // @done extract this to the global scss file

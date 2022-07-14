@@ -33,6 +33,10 @@ a:hover {
 * {
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 icon.is-huge {
