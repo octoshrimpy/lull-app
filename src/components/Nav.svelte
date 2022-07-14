@@ -2,23 +2,24 @@
   import Library  from '@/pages/Library.svelte'
   import Sounds   from '@/pages/Sounds.svelte'
   import Settings from '@/pages/Settings.svelte'
+  import {onMount} from 'svelte'
 
   import {page} from '@/lib/stores'
 
-  const changeTab = (evt) => {
-    let ref = evt.target.getAttribute('href')
+  const changePage = (evt, goto = null) => {
+    let ref = goto || evt.target.getAttribute('href')
 
-    let navItems = document.querySelectorAll('.navItem[href]')
+    let navItems = document.querySelectorAll('.navItem')
+    let clicked = [...navItems].filter(i => i.getAttribute('href') == ref)[0]
 
     for (const item of navItems) {
       item.classList.remove("js-active")
     }
 
-    evt.target.classList.add("js-active")
+    clicked.classList.add("js-active")
     
-    let idx = Array.from(navItems).indexOf(evt.target)
+    let idx = [...navItems].indexOf(clicked)
     let border = document.querySelector('.border')
-    console.log(border)
     border.setAttribute('data-offset', `${idx + 1}`)
 
     switch(ref) {
@@ -34,25 +35,30 @@
     }
   }
 
+  // set initial page
+  onMount(async () => {
+  changePage(null, 'library')
+  })
+
 </script>
 
 
 
 <nav>
   <div class="bar">
-    <div class="navItem" href="sounds" on:mousedown={changeTab}>
+    <div class="navItem" href="sounds" on:mousedown={changePage} on:touchstart={changePage}>
       <div class="icon">
         <i class="nf-mdi-headphones" />
       </div>
       <div class="label">sounds</div>
     </div>
-    <div class="navItem js-active" href="library" on:mousedown={changeTab}>
+    <div class="navItem" href="library" on:mousedown={changePage} on:touchstart={changePage}>
       <div class="icon">
         <i class="nf-fa-book" />
       </div>
       <div class="label">library</div>
     </div>
-    <div class="navItem" href="settings" on:mousedown={changeTab}>
+    <div class="navItem" href="settings" on:mousedown={changePage} on:touchstart={changePage}>
       <div class="icon">
         <i class="nf-mdi-settings" />
       </div>

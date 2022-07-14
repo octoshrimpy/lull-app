@@ -22,8 +22,14 @@
 
     content {
       display: flex;
+      flex-direction: column;
       flex-grow: 1;
-      background: $main-darker;
+      background: $main-dark;
+      overflow: auto;
+      padding-bottom: 2rem;
+      &::-webkit-scrollbar {
+        width: 0 !important
+      }
     }
   }
 </style>

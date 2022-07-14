@@ -1,14 +1,14 @@
 <script>
-  export let sound
+  import {sounds} from '@/lib/stores.js'
 
-  export let sounds
+  export let sound
 
   let toggleSound = evt => {
     let card = evt.target.closest("card")
     let cardSound = card.getAttribute("data-sound")
 
     let icon = evt.target
-    icon.classList.toggle("active")
+    card.classList.toggle("active")
 
     let range = card.querySelector('[type="range"]')
     range.disabled = !range.disabled
@@ -26,9 +26,12 @@
     console.log(_$sound)
     _$sound.volume = range.value
   }
+
+  sound.icon = sound.icon || $sounds.find(e => e.name == sound.name).icon
+  console.log(sound.icon)
 </script>
 
-<card data-sound={sound}>
+<card data-sound={sound} class="{sound.enabled ? "active" : ""}">
   <name>{sound.name}</name>
   <volume>
     <input
@@ -43,32 +46,49 @@
       on:change={updateVolume}
     />
   </volume>
-  <icon class="is-huge {sound.enabled ? "active" : ""}" on:click={toggleSound}>
+  <icon class="is-huge " on:mousedown={toggleSound} on:touchstart={toggleSound}>
     <i class={sound.icon} />
   </icon>
 </card>
 
 <style lang="scss">
   card {
-    background: $main-darkest;
+    background: $main-darker;
     padding: 2rem;
     display: grid;
     grid-template-areas:
       "name icon"
       "volume icon";
-
+    
     grid-gap: 1rem 3rem;
     grid-template-columns: auto min-content;
-    margin-bottom: 1rem;
-  }
+    // margin-bottom: 1rem;
+    border-top: 0.125rem solid $main-dark;
+    // border-radius: 0.33rem;
 
+    &:global(.active) {
+      icon {
+        color: $success;
+      }
+      name {
+        color: $main-lighter;
+        // font-weight: bold;
+      }
+    }
+  }
+  
   name {
     grid-area: name;
     text-transform: capitalize;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    color: $main-light;
   }
+
   volume {
     grid-area: volume;
+
+    // @todo style range
+    // @todo don't disable range when off
     input {
       width: 100%;
     }
@@ -82,18 +102,9 @@
     cursor: pointer;
     color: $main-light;
 
-    &:global(.active) {
-      color: $success;
-    }
     i {
       pointer-events: none;
     }
   }
 
-  // @todo extract this to the global scss file
-  icon.is-huge {
-    font-size: 3.5rem;
-    width: 4rem;
-    height: 4rem;
-  }
 </style>

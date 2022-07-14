@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "sirv public --single",
     "dev": "vite",
+    "devhost": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "tauri": "tauri"
