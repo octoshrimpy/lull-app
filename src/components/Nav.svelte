@@ -7,6 +7,7 @@
   import {page} from '@/lib/stores'
 
   const changePage = (evt, goto = null) => {
+    evt.preventDefault()
     let ref = goto || evt.target.getAttribute('href')
 
     let navItems = document.querySelectorAll('.navItem')
@@ -37,7 +38,7 @@
 
   // set initial page
   onMount(async () => {
-  changePage(null, 'library')
+  changePage(null, 'settings')
   })
 
 </script>
@@ -46,19 +47,19 @@
 
 <nav>
   <div class="bar">
-    <div class="navItem" href="sounds" on:mousedown={changePage} on:touchstart={changePage}>
+    <div class="navItem" href="sounds" on:mousedown={changePage}>
       <div class="icon">
         <i class="nf-mdi-headphones" />
       </div>
       <div class="label">sounds</div>
     </div>
-    <div class="navItem" href="library" on:mousedown={changePage} on:touchstart={changePage}>
+    <div class="navItem" href="library" on:mousedown={changePage}>
       <div class="icon">
         <i class="nf-fa-book" />
       </div>
       <div class="label">library</div>
     </div>
-    <div class="navItem" href="settings" on:mousedown={changePage} on:touchstart={changePage}>
+    <div class="navItem" href="settings" on:mousedown={changePage}>
       <div class="icon">
         <i class="nf-mdi-settings" />
       </div>
@@ -96,13 +97,14 @@
     font-size: 1.5rem;
     display: flex;
     align-items: end;
-    background: #1e1e28;
-    background: $main-darkest;
-    color: $main-light;
+    background: var(--main-darkest);
+    color: var(--main-light);
     padding: 0 1rem;
     max-height: $bar-height;
     position: relative;
     justify-content: space-between;
+    // box-shadow: inset 0 2px 0 0 var(--main-light); 
+    // border has to be box shadow because clip is inset border
 
 
     .navItem {
@@ -128,7 +130,7 @@
         .icon i {
           font-size: 2rem;
           transform: translateY(-1rem);
-          color: $main-lighter;
+          color: var(--main-lighter);
         }
       }
     }
@@ -136,13 +138,26 @@
     .border {
       @include animate;
       left: 1rem;
+      z-index: 99;
       bottom: calc(100% - 1px);
       height: 1.5rem;
       width: $bubble-width;
       position: absolute;
       clip-path: url(#menu);
       will-change: transform;
-      background: $main-darkest;
+      background: var(--main-darkest); // this is the border around the shape
+      // filter: drop-shadow(-1px -1px 0 var(--main-light));
+
+      // &:before {
+      //   content: "";
+      //   display: block;
+      //   position: relative;
+      //   background: var(--main-darkest); // this is the main color
+      //   clip-path: inherit;
+      //   top: 2px; // this is the thickness of the border. can only be inset
+      //   width: inherit;
+      //   height: inherit;
+      // }
     }
 
     .icon {
@@ -167,7 +182,15 @@
 
   .svg-container {
     position: absolute;
-    // padding: 0 1rem;
+
+    path {
+      outline: 3px solid red;
+    //   // fill: none;
+    //   stroke: #ca1c1c;
+    //   stroke-width: 1px;
+    //   stroke-dasharray: 2,2;
+    //   stroke-linejoin: round;
+    }
   }
 
   .label {
@@ -179,4 +202,5 @@
 
     @include animate;
   }
+
 </style>

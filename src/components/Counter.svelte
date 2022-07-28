@@ -1,14 +1,14 @@
 <script>
-  import {count} from '@/lib/stores.js'
+  // import {count} from '@/lib/stores.js'
 
   const increment = () => {
-    $count += 1
+    // $count += 1
   }
   export let name
 </script>
 
 <button on:click={increment}>
-  Clicks: {$count}, {name}
+  <!-- Clicks: {$count}, {name} -->
 </button>
 
 <style>

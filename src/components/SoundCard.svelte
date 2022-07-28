@@ -44,14 +44,14 @@
       on:change={updateVolume}
     />
   </volume>
-  <icon class="is-huge " on:mousedown={toggleSound} on:touchstart={toggleSound}>
+  <icon class="is-huge " on:mousedown={toggleSound}>
     <i class={sound.icon} />
   </icon>
 </card>
 
 <style lang="scss">
   card {
-    background: $main-darker;
+    background: var(--main-darker);
     padding: 2rem;
     display: grid;
     grid-template-areas:
@@ -61,15 +61,15 @@
     grid-gap: 1rem 3rem;
     grid-template-columns: auto min-content;
     // margin-bottom: 1rem;
-    border-top: 0.125rem solid $main-dark;
+    border-top: 0.125rem solid var(--main-dark);
     // border-radius: 0.33rem;
 
     &:global(.active) {
       icon {
-        color: $success;
+        color: var(--success-light);
       }
       name {
-        color: $main-lighter;
+        color: var(--main-lighter);
         // font-weight: bold;
       }
     }
@@ -79,7 +79,7 @@
     grid-area: name;
     text-transform: capitalize;
     font-size: 1.25rem;
-    color: $main-light;
+    color: var(--main-light);
   }
 
   volume {
@@ -98,7 +98,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: $main-light;
+    color: var(--main-light);
 
     i {
       pointer-events: none;

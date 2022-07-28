@@ -13,7 +13,7 @@ body,
   height: 100%;
   width: 100%;
   background-color: #1e1e28;
-  color: #a7a9bc;
+  color: #abaed1;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
@@ -53,4 +53,45 @@ icon.is-medium {
   font-size: 2rem;
   width: 3rem;
   height: 3rem;
+}
+
+html[data-theme=dark] {
+  --main-darkest: #1e1e28;
+  --main-darker: #282536;
+  --main-dark: #393553;
+  --main-medium: #4a486c;
+  --main-light: #646587;
+  --main-lighter: #abaed1;
+  --main-lightest: #e9eaee;
+  --blue-darker: #274c7a;
+  --blue-dark: #3d79ab;
+  --blue-medium: #5198c9;
+  --blue-light: #7bb5d7;
+  --blue-lighter: #9bcae3;
+  --error-dark: #be425e;
+  --error: #d55776;
+  --error-light: #e695ac;
+  --success-dark: #32845e;
+  --success: #43b884;
+  --success-light: #7ecea8;
+}
+html[data-theme=light] {
+  --main-darkest: #646587;
+  --main-darker: #abaed1;
+  --main-dark: #e9eaee;
+  --main-medium: #4a486c;
+  --main-light: #393553;
+  --main-lighter: #282536;
+  --main-lightest: #1e1e28;
+  --blue-darker: #9bcae3;
+  --blue-dark: #7bb5d7;
+  --blue-medium: #5198c9;
+  --blue-light: #3d79ab;
+  --blue-lighter: #274c7a;
+  --error-dark: #e695ac;
+  --error: #d55776;
+  --error-light: #be425e;
+  --success-dark: #7ecea8;
+  --success: #43b884;
+  --success-light: #32845e;
 }/*# sourceMappingURL=global.css.map */

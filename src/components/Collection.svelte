@@ -57,7 +57,7 @@
     display: list-item;      
     
     &:not(:last-child) {
-        border-bottom: 2px solid $main-darkest;
+        border-bottom: 2px solid var(--main-darkest);
       }
 
     
@@ -66,6 +66,7 @@
       display: flex;
       align-items: center;
       position: relative;
+      color: var(--main-light);
 
       &:after {
         position: absolute;
@@ -87,10 +88,10 @@
 
       &.active {
         icon {
-          color: $success;
+          color: var(--success);
         }
         name {
-          color: $main-lightest;
+          color: var(--main-lightest);
         }
       }
     }

@@ -60,3 +60,52 @@ icon {
     height: 3rem;
   }
 }
+
+html{
+  &[data-theme="dark"] {
+    --main-darkest : #{$main-darkest};
+    --main-darker  : #{$main-darker};
+    --main-dark    : #{$main-dark};
+    --main-medium  : #{$main-medium};
+    --main-light   : #{$main-light};
+    --main-lighter : #{$main-lighter};
+    --main-lightest: #{$main-lightest};
+
+    --blue-darker  : #{$blue-darker};
+    --blue-dark    : #{$blue-dark};
+    --blue-medium  : #{$blue-medium};
+    --blue-light   : #{$blue-light};
+    --blue-lighter : #{$blue-lighter};
+    
+    --error-dark   : #{$error-dark};
+    --error        : #{$error};
+    --error-light  : #{$error-light};
+    
+    --success-dark : #{$success-dark};
+    --success      : #{$success};
+    --success-light: #{$success-light};
+  }
+  &[data-theme="light"] {
+    --main-darkest : #{$main-light};
+    --main-darker  : #{$main-lighter};
+    --main-dark    : #{$main-lightest};
+    --main-medium  : #{$main-medium};
+    --main-light   : #{$main-dark};
+    --main-lighter : #{$main-darker};
+    --main-lightest: #{$main-darkest};
+
+    --blue-darker  : #{$blue-lighter};
+    --blue-dark    : #{$blue-light};
+    --blue-medium  : #{$blue-medium};
+    --blue-light   : #{$blue-dark};
+    --blue-lighter : #{$blue-darker};
+    
+    --error-dark   : #{$error-light};
+    --error        : #{$error};
+    --error-light  : #{$error-dark};
+    
+    --success-dark : #{$success-light};
+    --success      : #{$success};
+    --success-light: #{$success-dark};
+  }
+}
