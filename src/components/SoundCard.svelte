@@ -9,11 +9,8 @@
 
     card.classList.toggle("active")
 
-    let range = card.querySelector('[type="range"]')
-    range.disabled = !range.disabled
-
     let _$sound = $sounds.find(e => e.name == sound.name)
-    _$sound.enabled = !range.disabled
+    _$sound.enabled = !!card.classList.includes("active")
   }
 
   let updateVolume = evt => {
@@ -33,7 +30,6 @@
   <name>{sound.name}</name>
   <volume>
     <input
-      disabled="{sound.enabled ? false : true}"
       type="range"
       name="voume"
       id="volume"
@@ -50,6 +46,67 @@
 </card>
 
 <style lang="scss">
+
+  @mixin range {
+    -webkit-appearance: none;
+    $track-thickness: 0.5rem;
+    padding: 0.5rem 0;
+    background: transparent;
+    display: block;
+
+    $track-bg: var(--main-medium);
+    $thumb-bg: var(--main-medium);
+
+    &:global(.contrast){
+      &::-webkit-slider-runnable-track {
+        background: $blue-light !important;
+      }
+      &::-webkit-slider-thumb {
+        background: $blue-light !important;
+      }
+    }
+
+    &::-webkit-slider-runnable-track {
+      cursor: pointer;
+      height: $track-thickness;
+      width: 100%;
+      background: $track-bg;
+      @include animate;
+      border-radius: 999px;
+    }
+
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      $size: 1.5rem;
+      height: $size;
+      width: $size;
+      margin-top: calc((-#{$size} / 2) + (#{$track-thickness} / 2));
+      border-radius: 50%;
+      background: $thumb-bg;
+      cursor: pointer;
+
+      box-shadow: $shadow-border;
+
+      @include animate;
+    }
+
+    &:hover {
+      &::-webkit-slider-runnable-track {
+        box-shadow: $shadow-1;
+      }
+      &::-webkit-slider-thumb {
+        $size: 1.75rem;
+        height: $size;
+        width: $size;
+        margin-top: calc((-#{$size} / 2) + (#{$track-thickness} / 2));
+        // background: $bg-dark;
+        box-shadow: $shadow-3;
+      }
+    }
+  }
+
+
   card {
     background: var(--main-darker);
     padding: 2rem;
@@ -66,12 +123,20 @@
 
     &:global(.active) {
       icon {
-        color: var(--success-light);
+        color: var(--success);
       }
       name {
         color: var(--main-lighter);
         // font-weight: bold;
       }
+      volume input{
+      &::-webkit-slider-runnable-track {
+        background: $main-light !important;
+      }
+      &::-webkit-slider-thumb {
+        background: $success !important;
+      }
+    }
     }
   }
   
@@ -80,13 +145,16 @@
     text-transform: capitalize;
     font-size: 1.25rem;
     color: var(--main-light);
+    @include animate;
   }
 
   volume {
     grid-area: volume;
 
-    // @todo style range
-    // @todo don't disable range when off
+    input {
+      @include range;
+    }
+    
     input {
       width: 100%;
     }
